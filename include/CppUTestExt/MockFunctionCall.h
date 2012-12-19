@@ -58,6 +58,16 @@ public:
 	virtual MockFunctionCall& withDoubleParameter(const SimpleString& name, double value)=0;
 	virtual MockFunctionCall& withStringParameter(const SimpleString& name, const char* value)=0;
 	virtual MockFunctionCall& withPointerParameter(const SimpleString& name, void* value)=0;
+
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, int value)=0;
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, int *value)=0;
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, double value)=0;
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, double *value)=0;
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, const char* value)=0;
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, const char* *value)=0;
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, void* value)=0;
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, void* *value)=0;
+
 	virtual MockFunctionCall& andReturnValue(int value)=0;
 	virtual MockFunctionCall& andReturnValue(unsigned int value)=0;
 	virtual MockFunctionCall& andReturnValue(double value)=0;
@@ -96,6 +106,15 @@ public:
 	virtual MockFunctionCall& withParameterOfType(const SimpleString&, const SimpleString&, const void*);
 	virtual MockFunctionCall& ignoreOtherParameters();
 
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, int value);
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, int *value);
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, double value);
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, double *value);
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, const char* value);
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, const char* *value);
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, void* value);
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, void* *value);
+
 	virtual MockFunctionCall& andReturnValue(int);
 	virtual MockFunctionCall& andReturnValue(unsigned int);
 	virtual MockFunctionCall& andReturnValue(double);
@@ -123,6 +142,15 @@ public:
 	virtual MockFunctionCall& withStringParameter(const SimpleString&, const char*) { return *this; }
 	virtual MockFunctionCall& withPointerParameter(const SimpleString& , void*) { return *this; }
 	virtual MockFunctionCall& withParameterOfType(const SimpleString&, const SimpleString&, const void*) { return *this; }
+
+	virtual MockFunctionCall& withOutputParameter(const SimpleString&, int) { return *this; }
+	virtual MockFunctionCall& setOutputParameter(const SimpleString&, int *) { return *this; }
+	virtual MockFunctionCall& withOutputParameter(const SimpleString&, double) { return *this; }
+	virtual MockFunctionCall& setOutputParameter(const SimpleString&, double *) { return *this; }
+	virtual MockFunctionCall& withOutputParameter(const SimpleString&, const char*) { return *this; }
+	virtual MockFunctionCall& setOutputParameter(const SimpleString&, const char* *) { return *this; }
+	virtual MockFunctionCall& withOutputParameter(const SimpleString&, void*) { return *this; }
+	virtual MockFunctionCall& setOutputParameter(const SimpleString&, void* *) { return *this; }
 
 	virtual MockFunctionCall& andReturnValue(int) { return *this; }
 	virtual MockFunctionCall& andReturnValue(unsigned int) { return *this; }
@@ -152,6 +180,15 @@ public:
 	virtual MockFunctionCall& withPointerParameter(const SimpleString& name, void* value);
 	virtual MockFunctionCall& withParameterOfType(const SimpleString& typeName, const SimpleString& name, const void* value);
 	virtual MockFunctionCall& ignoreOtherParameters();
+
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, int value);
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, int *value);
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, double value);
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, double *value);
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, const char* value);
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, const char* *value);
+	virtual MockFunctionCall& withOutputParameter(const SimpleString& name, void* value);
+	virtual MockFunctionCall& setOutputParameter(const SimpleString& name, void* *value);
 
 	virtual MockFunctionCall& andReturnValue(int value);
 	virtual MockFunctionCall& andReturnValue(unsigned int value);
