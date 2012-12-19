@@ -147,51 +147,51 @@ MockFunctionCall& MockFunctionCallComposite::withParameterOfType(const SimpleStr
 
 }
 
-MockFunctionCall& MockFunctionCallComposite::withOutputParameter(const SimpleString& name, int value) {
+MockFunctionCall& MockFunctionCallComposite::andOutputParameter(const SimpleString& name, int value) {
 	for (MockFunctionCallCompositeNode* node = head_; node != NULL; node = node->next_)
-		node->call_.withOutputParameter(name, value);
+		node->call_.andOutputParameter(name, value);
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallComposite::setOutputParameter(const SimpleString& name, int *value) {
+MockFunctionCall& MockFunctionCallComposite::andOutputParameter(const SimpleString& name, int *value) {
 	for (MockFunctionCallCompositeNode* node = head_; node != NULL; node = node->next_)
-		node->call_.setOutputParameter(name, value);
+		node->call_.andOutputParameter(name, value);
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallComposite::withOutputParameter(const SimpleString& name, double value) {
+MockFunctionCall& MockFunctionCallComposite::andOutputParameter(const SimpleString& name, double value) {
 	for (MockFunctionCallCompositeNode* node = head_; node != NULL; node = node->next_)
-		node->call_.withOutputParameter(name, value);
+		node->call_.andOutputParameter(name, value);
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallComposite::setOutputParameter(const SimpleString& name, double *value) {
+MockFunctionCall& MockFunctionCallComposite::andOutputParameter(const SimpleString& name, double *value) {
 	for (MockFunctionCallCompositeNode* node = head_; node != NULL; node = node->next_)
-		node->call_.setOutputParameter(name, value);
+		node->call_.andOutputParameter(name, value);
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallComposite::withOutputParameter(const SimpleString& name, const char* value) {
+MockFunctionCall& MockFunctionCallComposite::andOutputParameter(const SimpleString& name, const char* value) {
 	for (MockFunctionCallCompositeNode* node = head_; node != NULL; node = node->next_)
-		node->call_.withOutputParameter(name, value);
+		node->call_.andOutputParameter(name, value);
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallComposite::setOutputParameter(const SimpleString& name, const char* *value) {
+MockFunctionCall& MockFunctionCallComposite::andOutputParameter(const SimpleString& name, const char* *value) {
 	for (MockFunctionCallCompositeNode* node = head_; node != NULL; node = node->next_)
-		node->call_.setOutputParameter(name, value);
+		node->call_.andOutputParameter(name, value);
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallComposite::withOutputParameter(const SimpleString& name, void* value) {
+MockFunctionCall& MockFunctionCallComposite::andOutputParameter(const SimpleString& name, void* value) {
 	for (MockFunctionCallCompositeNode* node = head_; node != NULL; node = node->next_)
-		node->call_.withOutputParameter(name, value);
+		node->call_.andOutputParameter(name, value);
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallComposite::setOutputParameter(const SimpleString& name, void* *value) {
+MockFunctionCall& MockFunctionCallComposite::andOutputParameter(const SimpleString& name, void* *value) {
 	for (MockFunctionCallCompositeNode* node = head_; node != NULL; node = node->next_)
-		node->call_.setOutputParameter(name, value);
+		node->call_.andOutputParameter(name, value);
 	return *this;
 }
 
@@ -333,7 +333,7 @@ MockFunctionCall& MockFunctionCallTrace::withParameterOfType(const SimpleString&
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallTrace::setOutputParameter(const SimpleString& name, int *value)
+MockFunctionCall& MockFunctionCallTrace::andOutputParameter(const SimpleString& name, int *value)
 {
 	traceBuffer_ += " ";
 	traceBuffer_ += name;
@@ -342,7 +342,7 @@ MockFunctionCall& MockFunctionCallTrace::setOutputParameter(const SimpleString& 
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallTrace::withOutputParameter(const SimpleString& name, int value)
+MockFunctionCall& MockFunctionCallTrace::andOutputParameter(const SimpleString& name, int value)
 {
 	traceBuffer_ += " ";
 	traceBuffer_ += name;
@@ -351,7 +351,7 @@ MockFunctionCall& MockFunctionCallTrace::withOutputParameter(const SimpleString&
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallTrace::setOutputParameter(const SimpleString& name, double *value)
+MockFunctionCall& MockFunctionCallTrace::andOutputParameter(const SimpleString& name, double *value)
 {
 	traceBuffer_ += " ";
 	traceBuffer_ += name;
@@ -360,7 +360,7 @@ MockFunctionCall& MockFunctionCallTrace::setOutputParameter(const SimpleString& 
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallTrace::withOutputParameter(const SimpleString& name, double value)
+MockFunctionCall& MockFunctionCallTrace::andOutputParameter(const SimpleString& name, double value)
 {
 	traceBuffer_ += " ";
 	traceBuffer_ += name;
@@ -369,7 +369,7 @@ MockFunctionCall& MockFunctionCallTrace::withOutputParameter(const SimpleString&
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallTrace::setOutputParameter(const SimpleString& name, const char* *value)
+MockFunctionCall& MockFunctionCallTrace::andOutputParameter(const SimpleString& name, const char* *value)
 {
 	traceBuffer_ += " ";
 	traceBuffer_ += name;
@@ -378,7 +378,7 @@ MockFunctionCall& MockFunctionCallTrace::setOutputParameter(const SimpleString& 
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallTrace::withOutputParameter(const SimpleString& name, const char* value)
+MockFunctionCall& MockFunctionCallTrace::andOutputParameter(const SimpleString& name, const char* value)
 {
 	traceBuffer_ += " ";
 	traceBuffer_ += name;
@@ -387,7 +387,7 @@ MockFunctionCall& MockFunctionCallTrace::withOutputParameter(const SimpleString&
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallTrace::setOutputParameter(const SimpleString& name, void* *value)
+MockFunctionCall& MockFunctionCallTrace::andOutputParameter(const SimpleString& name, void* *value)
 {
 	traceBuffer_ += " ";
 	traceBuffer_ += name;
@@ -396,7 +396,7 @@ MockFunctionCall& MockFunctionCallTrace::setOutputParameter(const SimpleString& 
 	return *this;
 }
 
-MockFunctionCall& MockFunctionCallTrace::withOutputParameter(const SimpleString& name, void* value)
+MockFunctionCall& MockFunctionCallTrace::andOutputParameter(const SimpleString& name, void* value)
 {
 	traceBuffer_ += " ";
 	traceBuffer_ += name;

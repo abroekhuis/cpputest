@@ -64,6 +64,26 @@ extern "C"{
 
 }
 
+TEST(MockSupport_c, expectAndActualOutputParameters)
+{
+	mock_c()->expectOneCall("boo")->andIntOutputParameters("integer", 1)->andDoubleOutputParameters("double", 1.0)->
+			andStringOutputParameters("string", "string")->andPointerOutputParameters("pointer", (void*) 1);
+
+	int i;
+	double d;
+	const char* str;
+	void* ptr = NULL;
+
+	mock_c()->actualCall("boo")->_andIntOutputParameters("integer", &i)->_andDoubleOutputParameters("double", &d)->
+			_andStringOutputParameters("string", &str)->_andPointerOutputParameters("pointer", &ptr);
+	mock_c()->checkExpectations();
+	LONGS_EQUAL(1, i);
+	DOUBLES_EQUAL(1.0, d, 0.05);
+	STRCMP_EQUAL("string", str);
+	POINTERS_EQUAL((void*) 1, ptr);
+
+}
+
 TEST(MockSupport_c, expectAndActualParametersOnObject)
 {
 	mock_c()->installComparator("typeName", typeNameIsEqual, typeNameValueToString);
