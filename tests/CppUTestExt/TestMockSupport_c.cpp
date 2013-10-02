@@ -81,7 +81,20 @@ TEST(MockSupport_c, expectAndActualOutputParameters)
 	DOUBLES_EQUAL(1.0, d, 0.05);
 	STRCMP_EQUAL("string", str);
 	POINTERS_EQUAL((void*) 1, ptr);
+}
 
+TEST(MockSupport_c, expectAndActualDoubleOutputParameter)
+{
+	mock_c()->expectOneCall("boo")->andPointerOutputParameters("integer", (void*)1);
+	mock_c()->expectOneCall("boo")->andPointerOutputParameters("integer", (void*)2);
+
+	void *i, *j;
+
+	mock_c()->actualCall("boo")->_andPointerOutputParameters("integer", &i);
+	mock_c()->actualCall("boo")->_andPointerOutputParameters("integer", &j);
+	mock_c()->checkExpectations();
+	POINTERS_EQUAL((void*) 1, i);
+	POINTERS_EQUAL((void*) 1, j);
 }
 
 TEST(MockSupport_c, expectAndActualParametersOnObject)

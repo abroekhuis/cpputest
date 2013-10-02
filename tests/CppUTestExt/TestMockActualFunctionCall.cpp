@@ -193,3 +193,53 @@ TEST(MockActualFunctionCall, testMixedOutputParameters)
 
 	list->deleteAllExpectationsAndClearList();
 }
+
+TEST(MockActualFunctionCall, testDoublePointerOutputParameters)
+{
+	void* ptr1 = (void*) 0x123;
+	void* ptr2 = (void*) 0x789;
+	MockExpectedFunctionCall* call1 = new MockExpectedFunctionCall();
+	call1->withName("func");
+	call1->andOutputParameter("pointer1", ptr1);
+
+	MockExpectedFunctionCall* call2 = new MockExpectedFunctionCall();
+	call2->withName("func");
+	call2->andOutputParameter("pointer2", ptr2);
+
+	list->addExpectedCall(call1);
+	list->addExpectedCall(call2);
+
+	MockActualFunctionCall actualCall1(1, reporter, *list);
+	MockActualFunctionCall actualCall2(2, reporter, *list);
+
+	void* ptrOut1 = NULL;
+	void* ptrOut2 = NULL;
+
+	actualCall1.withName("func");
+	actualCall1.andOutputParameter("pointer1", &ptrOut1);
+	actualCall2.withName("func");
+	actualCall2.andOutputParameter("pointer2", &ptrOut2);
+
+	POINTERS_EQUAL(ptr1, ptrOut1);
+	POINTERS_EQUAL(ptr2, ptrOut2);
+
+	list->deleteAllExpectationsAndClearList();
+}
+
+//TEST(MockActualFunctionCall, testBufferedOutputParameters)
+//{
+//	void* ptr = (void*) 0x123;
+//	MockExpectedFunctionCall* call1 = new MockExpectedFunctionCall();
+//	call1->withName("func");
+//	call1->andBufferedOutputParameter("buf", buf, size);
+//	list->addExpectedCall(call1);
+//
+//	MockActualFunctionCall actualCall1(1, reporter, *list);
+//	double d2;
+//
+//	actualCall1.withName("func");
+//	actualCall1.andBufferedOutputParameter("buf", data, size);
+//	DOUBLES_EQUAL(1.2, d2, 0.05);
+//
+//	list->deleteAllExpectationsAndClearList();
+//}
